@@ -1,0 +1,1 @@
+INSERT INTO `portafolio`.`usuario` (`UsrUsr`, `UsrNom`, `UsrPwd`) VALUES ('admin', 'Administrador', '1234');

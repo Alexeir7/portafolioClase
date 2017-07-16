@@ -20,6 +20,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#UsuariosMenuClick" text="Usuarios" />
                   <MenuItem mnemonicParsing="false" text="Docentes" />
+                  <MenuItem mnemonicParsing="false" onAction="#ClasesMenuClick" text="Clases" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Transacciones">
