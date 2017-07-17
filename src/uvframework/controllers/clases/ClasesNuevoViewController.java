@@ -7,7 +7,9 @@ package uvframework.controllers.clases;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import uvframework.tools.WindowsManager;
 
 /**
  * FXML Controller class
@@ -23,5 +25,13 @@ public class ClasesNuevoViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+     @FXML
+    private void CrearBtnClick(){
+        }
+     @FXML
+    private void CancelarBtnClick(){
+         WindowsManager.getStage("/clases/nuevo").hide();
     
-}
+    }
+    }
+

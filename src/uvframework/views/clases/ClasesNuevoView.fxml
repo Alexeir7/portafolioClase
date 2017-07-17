@@ -16,8 +16,8 @@
       </Label>
       <Button layoutX="307.0" layoutY="246.0" mnemonicParsing="false" onAction="#CrearBtnClick" prefHeight="38.0" prefWidth="96.0" text="Crear" />
       <Button layoutX="33.0" layoutY="246.0" mnemonicParsing="false" onAction="#CancelarBtnClick" prefHeight="38.0" prefWidth="96.0" text="Cancelar" />
-      <TextField fx:id="UsrUsr" layoutX="33.0" layoutY="84.0" prefHeight="38.0" prefWidth="242.0" promptText="Clase" />
-      <TextField fx:id="UsrNom" layoutX="33.0" layoutY="136.0" prefHeight="38.0" prefWidth="370.0" promptText="Descripcion" />
-      <TextField fx:id="UsrUsr1" layoutX="33.0" layoutY="188.0" prefHeight="38.0" prefWidth="242.0" promptText="Creditos" />
+      <TextField fx:id="ClsNom" layoutX="33.0" layoutY="84.0" prefHeight="38.0" prefWidth="242.0" promptText="Clase" />
+      <TextField fx:id="ClsDsc" layoutX="33.0" layoutY="136.0" prefHeight="38.0" prefWidth="370.0" promptText="Descripcion" />
+      <TextField fx:id="ClsCrd" layoutX="33.0" layoutY="188.0" prefHeight="38.0" prefWidth="242.0" promptText="Creditos" />
    </children>
 </AnchorPane>
