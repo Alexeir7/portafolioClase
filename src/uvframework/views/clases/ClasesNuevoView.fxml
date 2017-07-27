@@ -7,17 +7,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="315.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uvframework.controllers.clases.ClasesNuevoViewController">
+<AnchorPane id="AnchorPane" prefHeight="357.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uvframework.controllers.clases.ClasesNuevoViewController">
    <children>
       <Label layoutX="33.0" layoutY="35.0" text="Nueva Clase">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="307.0" layoutY="246.0" mnemonicParsing="false" onAction="#CrearBtnClick" prefHeight="38.0" prefWidth="96.0" text="Crear" />
-      <Button layoutX="33.0" layoutY="246.0" mnemonicParsing="false" onAction="#CancelarBtnClick" prefHeight="38.0" prefWidth="96.0" text="Cancelar" />
-      <TextField fx:id="ClsNom" layoutX="33.0" layoutY="84.0" prefHeight="38.0" prefWidth="242.0" promptText="Clase" />
-      <TextField fx:id="ClsDsc" layoutX="33.0" layoutY="136.0" prefHeight="38.0" prefWidth="370.0" promptText="Descripcion" />
-      <TextField fx:id="ClsCrd" layoutX="33.0" layoutY="188.0" prefHeight="38.0" prefWidth="242.0" promptText="Creditos" />
+      <Button layoutX="310.0" layoutY="282.0" mnemonicParsing="false" onAction="#CrearBtnClick" prefHeight="38.0" prefWidth="96.0" text="Crear" />
+      <Button layoutX="36.0" layoutY="282.0" mnemonicParsing="false" onAction="#CancelarBtnClick" prefHeight="38.0" prefWidth="96.0" text="Cancelar" />
+      <TextField fx:id="ClsNom" layoutX="36.0" layoutY="120.0" prefHeight="38.0" prefWidth="242.0" promptText="Clase" />
+      <TextField fx:id="ClsDsc" layoutX="36.0" layoutY="172.0" prefHeight="38.0" prefWidth="370.0" promptText="Descripcion" />
+      <TextField fx:id="ClsCrd" layoutX="36.0" layoutY="224.0" prefHeight="38.0" prefWidth="242.0" promptText="Creditos" />
+      <TextField fx:id="ClsCod" layoutX="36.0" layoutY="72.0" prefHeight="38.0" prefWidth="242.0" promptText="Codigo" />
    </children>
 </AnchorPane>
