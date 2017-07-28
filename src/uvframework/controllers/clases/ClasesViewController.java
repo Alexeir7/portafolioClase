@@ -29,4 +29,8 @@ public class ClasesViewController implements Initializable {
      private void NuevoBtnClick(){
         WindowsManager.getStage("/clases/nuevo").show();
     }
+   @FXML
+     private void DetalleBtnClick(){
+        WindowsManager.getStage("/clases/detalle").show();
+    }  
    }

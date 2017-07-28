@@ -30,5 +30,9 @@ public class UsuariosViewController implements Initializable {
     private void NuevoBtnClick(){
         WindowsManager.getStage("/usuarios/nuevo").show();
     }
+    @FXML 
+    private void DetalleBtnClick(){
+        WindowsManager.getStage("/usuarios/detalle").show();
+    }
     
 }
