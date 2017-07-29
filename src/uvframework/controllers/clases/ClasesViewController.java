@@ -6,10 +6,21 @@
 package uvframework.controllers.clases;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import uvframework.UVF;
+import uvframework.models.ClasesModel;
+import uvframework.models.UsuariosModel;
+import uvframework.tools.TableViewAdapter;
+import uvframework.tools.TableViewColumn;
+import uvframework.tools.TableViewRow;
 import uvframework.tools.WindowsManager;
+
 /**
  * FXML Controller class
  *
@@ -17,20 +28,58 @@ import uvframework.tools.WindowsManager;
  */
 public class ClasesViewController implements Initializable {
 
+    @FXML
+    private TableView ResultadoTable;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // T
-     
-}
- @FXML
-     private void NuevoBtnClick(){
+
+    }
+
+    @FXML
+    private void NuevoBtnClick() {
         WindowsManager.getStage("/clases/nuevo").show();
     }
-   @FXML
-     private void DetalleBtnClick(){
-        WindowsManager.getStage("/clases/detalle").show();
-    }  
-   }
+
+    @FXML
+    private void DetalleBtnClick() {
+        String ClsCod = ((TableViewRow) ResultadoTable.getSelectionModel().getSelectedItem()).get("ClsCod").toString();
+        UVF.workdata.put("ClsCod", ClsCod);
+        WindowsManager.getStage("/clases/detalle", true).show();
+    }
+    
+    @FXML
+    private void EditarBtnClick(){
+        String ClsCod = ((TableViewRow) ResultadoTable.getSelectionModel().getSelectedItem()).get("ClsCod").toString();
+        UVF.workdata.put("ClsCod", ClsCod);
+        WindowsManager.getStage("/clases/editar", true).show();
+    }
+
+    @FXML
+    private void BuscarBtnClick() throws SQLException {
+        ResultSet rs = ClasesModel.buscar("");
+
+        TableViewAdapter tva = new TableViewAdapter(ResultadoTable);
+        ArrayList titles = new ArrayList();
+
+        titles.add(new TableViewColumn("ClsCod", "Codigo", 100.0));
+        titles.add(new TableViewColumn("ClsNom", "Nombre", 100.0));
+        titles.add(new TableViewColumn("ClsDsc", "Descripcion", 200.0));
+        titles.add(new TableViewColumn("ClsCrd", "Creditos", 100.0));
+
+        tva.setRowDoubleClickHandler((e) -> {
+            this.TableRowClick();
+        });
+
+        tva.fromResultSet(rs, titles);
+    }
+
+    private void TableRowClick() {
+        String ClsCod = ((TableViewRow) ResultadoTable.getSelectionModel().getSelectedItem()).get("ClsCod").toString();
+        UVF.workdata.put("ClsCod", ClsCod);
+        WindowsManager.getStage("/clases/editar", true).show();
+    }
+}

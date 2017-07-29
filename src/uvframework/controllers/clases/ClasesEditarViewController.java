@@ -10,17 +10,19 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 import uvframework.UVF;
 import uvframework.models.ClasesModel;
 import uvframework.models.entities.ClaseEntity;
 import uvframework.tools.WindowsManager;
 
 /**
+ * FXML Controller class
  *
- * @author Jessica Reyes
+ * @author alexe
  */
-public class ClasesDetalleViewController implements Initializable {
-
+public class ClasesEditarViewController implements Initializable {
+    
     @FXML
     private TextField ClsCod;
     @FXML
@@ -35,17 +37,36 @@ public class ClasesDetalleViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
         ClaseEntity data = ClasesModel.getOne(UVF.workdata.get("ClsCod").toString());
         ClsCod.setText(data.ClsCod);
         ClsNom.setText(data.ClsNom);
         ClsDsc.setText(data.ClsDsc);
         ClsCrd.setText(data.ClsCrd);
+        
     }
-
+    
     @FXML
-    private void SalirBtnClick() {
-        WindowsManager.getStage("/clases/detalle").hide();
+    private void CancelarBtnClick() {
+        WindowsManager.getStage("/clases/editar").hide();
 
     }
+    
+    @FXML
+    private void GuardarBtnClick(){
+        ClaseEntity clase = new ClaseEntity();
+        
+        clase.ClsCod = ClsCod.getText();
+        clase.ClsNom = ClsNom.getText();
+        clase.ClsDsc = ClsDsc.getText();
+        clase.ClsCrd = ClsCrd.getText();
+        
+        if(ClasesModel.Editar(clase)){
+            JOptionPane.showMessageDialog(null, "Clase Actualizada");
+            WindowsManager.getStage("/clases/editar").hide();
+        }else{
+            JOptionPane.showMessageDialog(null, "Error Actualizando clase");
+        }
+    }
+    
 }

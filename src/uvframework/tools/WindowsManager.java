@@ -6,7 +6,6 @@
 package uvframework.tools;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -23,14 +22,18 @@ import uvframework.UVF;
  */
 public class WindowsManager {
     
-    private static final Map stages = new HashMap(); 
+    private static final Map stages = new HashMap();
     
     public static Stage getStage(String path){
+        return getStage(path,false);
+    }
+    
+    public static Stage getStage(String path, Boolean force){
         Stage selected = null;
         
         try {
             
-            if(!stages.containsKey(path)){
+            if(!stages.containsKey(path) || force){
                 Parent root = getParentFXML(path);
                 selected = new Stage();
                 selected.setScene(new Scene(root));
@@ -53,11 +56,12 @@ public class WindowsManager {
             case "/login": fullpath="views/LoginView.fxml"; break;
             case "/main": fullpath="views/MainView.fxml"; break;
             case "/usuarios": fullpath="views/usuarios/UsuariosView.fxml"; break;
-            case "/clases": fullpath="views/clases/ClasesView.fxml"; break;
-            case "/clases/detalle": fullpath="views/clases/ClasesDetalleView.fxml"; break;
             case "/usuarios/nuevo": fullpath="views/usuarios/UsuariosNuevoView.fxml"; break;
-            case "/usuarios/detalle": fullpath="views/usuarios/UsuariosDetalleView.fxml"; break;
+            case "/usuarios/editar": fullpath="views/usuarios/UsuariosEditView.fxml"; break;
+            case "/clases": fullpath="views/clases/ClasesView.fxml"; break;
             case "/clases/nuevo": fullpath="views/clases/ClasesNuevoView.fxml"; break;
+            case "/clases/editar": fullpath="views/clases/ClasesEditarView.fxml"; break;
+            case "/clases/detalle": fullpath="views/clases/ClasesDetalleView.fxml"; break;
             default: fullpath="views/LoginView.fxml";
         }
         

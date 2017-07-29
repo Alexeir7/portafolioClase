@@ -5,9 +5,12 @@
  */
 package uvframework;
 
+import java.util.HashMap;
+import java.util.Map;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import uvframework.models.entities.ClaseEntity;
 import uvframework.models.entities.UsuarioEntity;
 import uvframework.tools.MySQLConn;
 import uvframework.tools.WindowsManager;
@@ -20,11 +23,14 @@ public class UVF extends Application {
     
     
     public static UsuarioEntity user;
+    public static ClaseEntity clase;
+    public static Map workdata;
     
     @Override
     public void start(Stage stage) throws Exception {
     
         if(MySQLConn.InitConn()){
+            workdata = new HashMap();
             WindowsManager.getStage("/login").show();
         }else{
             JOptionPane.showMessageDialog(null, "Error Conectando a la DB");
