@@ -10,9 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import uvframework.UVF;
 import uvframework.models.ClasesModel;
 import uvframework.models.UsuariosModel;
@@ -30,12 +33,33 @@ public class ClasesViewController implements Initializable {
 
     @FXML
     private TableView ResultadoTable;
+    
+    @FXML
+    private TextField Key;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        ResultSet rs = ClasesModel.buscar("");
+
+        TableViewAdapter tva = new TableViewAdapter(ResultadoTable);
+        ArrayList titles = new ArrayList();
+
+        titles.add(new TableViewColumn("ClsCod", "Codigo", 100.0));
+        titles.add(new TableViewColumn("ClsNom", "Nombre", 100.0));
+        titles.add(new TableViewColumn("ClsDsc", "Descripcion", 200.0));
+        titles.add(new TableViewColumn("ClsCrd", "Creditos", 100.0));
+        
+        try {
+            tva.fromResultSet(rs, titles);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClasesViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
 
     }
 
@@ -60,7 +84,9 @@ public class ClasesViewController implements Initializable {
 
     @FXML
     private void BuscarBtnClick() throws SQLException {
-        ResultSet rs = ClasesModel.buscar("");
+        
+        
+        ResultSet rs = ClasesModel.buscar(Key.getText());
 
         TableViewAdapter tva = new TableViewAdapter(ResultadoTable);
         ArrayList titles = new ArrayList();

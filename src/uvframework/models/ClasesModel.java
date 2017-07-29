@@ -69,12 +69,11 @@ public class ClasesModel {
     public static ResultSet buscar(String key) {
         try {
 
-            String qry = "SELECT * FROM clase WHERE ClsNom LIKE ? OR ClsCod LIKE ?;";
+            String qry = "SELECT * FROM clase WHERE ClsNom LIKE ?;";
 
             PreparedStatement pst = MySQLConn.conn.prepareStatement(qry);
 
             pst.setString(1, '%' + key + '%');
-            pst.setString(2, '%' + key + '%');
 
             return pst.executeQuery();
 
