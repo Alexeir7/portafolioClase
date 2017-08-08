@@ -33,7 +33,11 @@ public class ClasesModel {
 
             int err = pst.executeUpdate();
 
-            return err != 0;
+            if (err != 0) {
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (SQLException ex) {
 

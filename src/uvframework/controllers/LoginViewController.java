@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import net.sf.oval.constraint.NotBlank;
 import uvframework.UVF;
 import uvframework.models.UsuariosModel;
 import uvframework.models.entities.UsuarioEntity;
@@ -20,33 +21,35 @@ import uvframework.tools.WindowsManager;
  * @author Rafael Maldonado
  */
 public class LoginViewController implements Initializable {
-    
-    @FXML private TextField UsrUsr;
-    @FXML private TextField UsrPwd;
-    
-    @FXML   
+
+    @FXML
+    private TextField UsrUsr;
+    @FXML
+    private TextField UsrPwd;
+
+    @FXML
     private void LoginBtnClick() {
-                
+
         UsuarioEntity user = new UsuarioEntity();
         user.UsrUsr = UsrUsr.getText();
         user.UsrPwd = UsrPwd.getText();
-        
+
         UsuarioEntity dbuser = UsuariosModel.Login(user);
-        
-        if(dbuser != null){
+
+        if (dbuser != null) {
             System.out.println("Usuario Valido!");
-            System.out.println("Bienvenido "+dbuser.UsrNom+"!");
+            System.out.println("Bienvenido " + dbuser.UsrNom + "!");
             UVF.user = dbuser;
             WindowsManager.getStage("/login").hide();
             WindowsManager.getStage("/main").show();
-        }else{
+        } else {
             System.out.println("Datos Incorrectos");
         }
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }
